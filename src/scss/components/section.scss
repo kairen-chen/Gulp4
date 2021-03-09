@@ -1,0 +1,15 @@
+@use "../base/variables" as vars;
+
+section {
+    background-color: vars.$secondary-color;
+    p{
+        color: vars.$text-color;
+        margin: 0 50px;
+        font-size: 1.4rem;
+    }
+    img {
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+    }
+}
