@@ -40,12 +40,12 @@ const css = () => {
 // js tasks
 const js = () => {
     return src('src/**/*.js')
-            // .pipe(babel({
-            //     presets: ['es2015']
-            // }))
             .pipe(babel({
-                presets: ["@babel/preset-env"]
+                presets: ['es2015']
             }))
+            // .pipe(babel({
+            //     presets: ["@babel/preset-env"]
+            // }))
             .pipe(webpack({
                 mode: "development",
                 devtool: "inline-source-map",
