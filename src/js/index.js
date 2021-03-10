@@ -1,6 +1,6 @@
 import Person from "./components/person.js";
 
-const john = new Person("Guys", 40);
+const john = new Person("Guys", 23);
 console.log(john.getInfo());
 
 const calculate = (a, b) => a+b;

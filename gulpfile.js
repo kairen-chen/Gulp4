@@ -71,6 +71,11 @@ const js = () => {
     //         .pipe(mode.development( browserSync.stream() ));
 }
 
+// copy html
+const copyHTML = () => {
+    return src("*.html")
+            .pipe(dest("dist/"));
+}
 
 // copy tasks
 const copyImages = () => {
@@ -98,5 +103,5 @@ const watchForChanges = () => {
 }
 
 // public tasks
-exports.default = series(clean, parallel(css, js, copyImages, copyFonts), watchForChanges);
-exports.build = series(clean, parallel(css, js, copyFonts, copyImages));
+exports.default = series(clean, parallel(copyHTML, css, js, copyImages, copyFonts), watchForChanges);
+exports.build = series(clean, parallel(copyHTML, css, js, copyFonts, copyImages));
