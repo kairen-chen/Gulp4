@@ -6,10 +6,21 @@ section {
         color: vars.$text-color;
         margin: 0 50px;
         font-size: 1.4rem;
+        text-align: left;
+        white-space: pre-line;
     }
     img {
         max-width: 100%;
         display: block;
         margin: 0 auto;
+        float: right;
+        margin: 10px 10px 10px 0;
+    }
+    iframe{
+        margin: 40px;
+    }
+    hr{
+        margin: 0 auto;
+        width: 90%;
     }
 }

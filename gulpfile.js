@@ -1,4 +1,4 @@
-const { src, dest, watch, series, parallel } = require("gulp");
+const { src, dest, watch, series, parallel, task } = require("gulp");
 const sass = require("gulp-dart-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const csso = require("gulp-csso");
@@ -10,6 +10,12 @@ const sourcemaps = require("gulp-sourcemaps");
 const del = require("del");
 const mode = require("gulp-mode")();
 const browserSync = require("browser-sync").create();
+const browserify = require("browserify");
+const babelify = require("babelify");
+const transform = require("transform");
+const buffer = require("vinyl-buffer");
+const source = require("vinyl-source-stream");
+const uglify = require("gulp-uglify");
 
 // clean tasks
 const clean = () => {
@@ -37,26 +43,34 @@ const css = () => {
             .pipe(mode.development( browserSync.stream() ));
 }
 
-// js tasks
 const js = () => {
-    return src('src/**/*.js')
-            .pipe(babel({
-                presets: ['es2015']
-            }))
-            // .pipe(babel({
-            //     presets: ["@babel/preset-env"]
-            // }))
-            .pipe(webpack({
-                mode: "development",
-                devtool: "inline-source-map",
-            }))
-            .pipe(mode.development( sourcemaps.init({ loadMaps: true }) ))
-            .pipe(rename('app.js'))
-            .pipe(mode.production( terser({ output: { comments: false} }) ))
-            .pipe(mode.development( sourcemaps.write() ))
-            .pipe(dest("dist"))
-            .pipe(mode.development( browserSync.stream() ));
+    return browserify('src/js/index.js')
+        .transform(babelify, { "presets": ["@babel/preset-env"] })
+        .bundle()
+        .pipe(source("app.js"))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({ loadMaps: true}))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
+        .pipe(dest('dist'))
+        .pipe(mode.development( browserSync.stream() ));
+
+    // return src('src/**/*.js')
+    //         .pipe(babel({
+    //             presets: ["env"]
+    //         }))
+    //         .pipe(webpack({
+    //             mode: "development",
+    //             devtool: "inline-source-map",
+    //         }))
+    //         .pipe(mode.development( sourcemaps.init({ loadMaps: true }) ))
+    //         .pipe(rename('app.js'))
+    //         .pipe(mode.production( terser({ output: { comments: false} }) ))
+    //         .pipe(mode.development( sourcemaps.write() ))
+    //         .pipe(dest("dist"))
+    //         .pipe(mode.development( browserSync.stream() ));
 }
+
 
 // copy tasks
 const copyImages = () => {
@@ -76,7 +90,6 @@ const watchForChanges = () => {
             baseDir: "./"
         }
     });
-
     watch("src/scss/**/*.scss", css);
     watch("src/**/*.js", js);
     watch("**/*.html").on("change", browserSync.reload);
@@ -85,5 +98,5 @@ const watchForChanges = () => {
 }
 
 // public tasks
-exports.default = series(clean, parallel(css,  copyImages, copyFonts), js, watchForChanges);
+exports.default = series(clean, parallel(css, js, copyImages, copyFonts), watchForChanges);
 exports.build = series(clean, parallel(css, js, copyFonts, copyImages));
