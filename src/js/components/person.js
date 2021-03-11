@@ -1,10 +1,13 @@
+import Expertise from "./expertise.js";
 class Person {
-    constructor(name, age) {
+    constructor(name, age , something) {
         this.name = name;
         this.age = age;
+        this.something = something;
     }
     getInfo() {
-        return `${this.name} is ${this.age} year old`;
+        const expertise = new Expertise(this.something);
+        return `${this.name} is ${this.age} year old \n 專長: ${expertise.getInfo()}`;
     }
 }
 

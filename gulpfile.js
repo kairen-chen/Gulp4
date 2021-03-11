@@ -1,21 +1,34 @@
 const { src, dest, watch, series, parallel, task } = require("gulp");
+// css
 const sass = require("gulp-dart-sass");
 const autoprefixer = require("gulp-autoprefixer");
 const csso = require("gulp-csso");
+// js
 const babel = require("gulp-babel");
-const rename = require("gulp-rename");
 const terser = require("gulp-terser");
+//處理export
+const browserify = require("browserify");
+//ES6 翻譯成 ES5
+const babelify = require("babelify");
+const buffer = require("vinyl-buffer");
+const uglify = require("gulp-uglify");
+
+//other
+const source = require("vinyl-source-stream");
 const webpack = require("webpack-stream");
 const sourcemaps = require("gulp-sourcemaps");
 const del = require("del");
-const mode = require("gulp-mode")();
+const rename = require("gulp-rename");
+/**
+ * gulp-mode
+ * 
+ * 注意: O -> npm run dev / build
+ *      X -> gulp / gulp build
+ */
+const mode = require("gulp-mode")(); 
 const browserSync = require("browser-sync").create();
-const browserify = require("browserify");
-const babelify = require("babelify");
-const transform = require("transform");
-const buffer = require("vinyl-buffer");
-const source = require("vinyl-source-stream");
-const uglify = require("gulp-uglify");
+
+
 
 // clean tasks
 const clean = () => {
@@ -36,26 +49,26 @@ const css = () => {
             .pipe(mode.development( sourcemaps.init() ))
             .pipe(sass().on("error", sass.logError))
             .pipe(autoprefixer())
-            .pipe(rename('app.css'))
+            .pipe(rename("app.css"))
             .pipe(mode.production( csso() ))
             .pipe(mode.development( sourcemaps.write() ))
             .pipe(dest("dist"))
             .pipe(mode.development( browserSync.stream() ));
-}
+} 
 
 const js = () => {
-    return browserify('src/js/index.js')
+    return browserify("src/js/index.js")
         .transform(babelify, { "presets": ["@babel/preset-env"] })
         .bundle()
         .pipe(source("app.js"))
         .pipe(buffer())
-        .pipe(sourcemaps.init({ loadMaps: true}))
+        .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(dest('dist'))
+        .pipe(dest("dist"))
         .pipe(mode.development( browserSync.stream() ));
 
-    // return src('src/**/*.js')
+    // return src("src/**/*.js")
     //         .pipe(babel({
     //             presets: ["env"]
     //         }))
@@ -64,7 +77,7 @@ const js = () => {
     //             devtool: "inline-source-map",
     //         }))
     //         .pipe(mode.development( sourcemaps.init({ loadMaps: true }) ))
-    //         .pipe(rename('app.js'))
+    //         .pipe(rename("app.js"))
     //         .pipe(mode.production( terser({ output: { comments: false} }) ))
     //         .pipe(mode.development( sourcemaps.write() ))
     //         .pipe(dest("dist"))
@@ -73,8 +86,8 @@ const js = () => {
 
 // copy html
 const copyHTML = () => {
-    return src("*.html")
-            .pipe(dest("dist/"));
+    return src("src/*.html")
+            .pipe(dest("dist"));
 }
 
 // copy tasks
@@ -85,22 +98,36 @@ const copyImages = () => {
 
 const copyFonts = () => {
     return src("src/fonts/**/*.{eot,ttf,woff,woff2,svg}")
-            .pipe(dest("dist/src/fonts"));
+            .pipe(dest("/dist/src/fonts"));
 }
 
 // watch task
 const watchForChanges = () => {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        }
-    });
     watch("src/scss/**/*.scss", css);
     watch("src/**/*.js", js);
-    watch("**/*.html").on("change", browserSync.reload);
-    watch("src/images/**/*.{jpg,jpeg,png,gif,svg}", series(cleanImages, copyImages));
-    watch("src/fonts/**/*.{eot,ttf,woff,woff2,svg}", series(cleanFonts, copyImages));
+    watch("**/*.html").on("change", series(copyHTML, browserSync.reload));
+    watch("src/images/**/*.{jpg,jpeg,png,gif,svg}", series(cleanImages));
+    watch("src/fonts/**/*.{eot,ttf,woff,woff2,svg}", series(cleanFonts));
+    // browserSync.watch("src/scss/**/*.scss", function (event, file) {
+    //     if (event === "change") {
+    //         css();
+    //     }
+    // });
 }
+
+((bs)=>{
+    if(bs && mode.development()) {
+        bs.init({
+            server: {
+                baseDir: "./"
+            }
+        });
+        
+        bs.emitter.on("init", function () {
+            console.log("Browsersync is running!");
+        });
+    }
+})(browserSync)
 
 // public tasks
 exports.default = series(clean, parallel(copyHTML, css, js, copyImages, copyFonts), watchForChanges);
