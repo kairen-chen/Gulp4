@@ -23,8 +23,10 @@ section {
         margin: 0 auto;
         width: 95%;
     }
-    .aHref{
+    .aTagStyle{
+        display: inline-block;
         color: vars.$text-color;
         font-size: 2em;
+        margin: 20px 0;
     }
 }

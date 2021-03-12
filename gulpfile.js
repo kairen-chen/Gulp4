@@ -1,134 +1,181 @@
-const { src, dest, watch, series, parallel, task } = require("gulp");
+
+const { src, dest, watch, series, parallel } = require("gulp"),
+//pug
+pug = require('gulp-pug'),
+
 // css
-const sass = require("gulp-dart-sass");
-const autoprefixer = require("gulp-autoprefixer");
-const csso = require("gulp-csso");
-// js
-const babel = require("gulp-babel");
-const terser = require("gulp-terser");
+sass = require("gulp-dart-sass"),
+autoprefixer = require("gulp-autoprefixer"),
+csso = require("gulp-csso"),
+
 //處理export
-const browserify = require("browserify");
+browserify = require("browserify"),
 //ES6 翻譯成 ES5
-const babelify = require("babelify");
-const buffer = require("vinyl-buffer");
-const uglify = require("gulp-uglify");
+babelify = require("babelify"),
+buffer = require("vinyl-buffer"),
+uglify = require("gulp-uglify"),
 
 //other
-const source = require("vinyl-source-stream");
-const webpack = require("webpack-stream");
-const sourcemaps = require("gulp-sourcemaps");
-const del = require("del");
-const rename = require("gulp-rename");
+source = require("vinyl-source-stream"),
+sourcemaps = require("gulp-sourcemaps"),
+del = require("del"),
+rename = require("gulp-rename");
+imageMin = require('gulp-imagemin'),
+
 /**
  * gulp-mode
  * 
  * 注意: O -> npm run dev / build
  *      X -> gulp / gulp build
  */
-const mode = require("gulp-mode")(); 
-const browserSync = require("browser-sync").create();
+mode = require("gulp-mode")(), 
+browserSync = require("browser-sync").create(),
 
-
-
+// =========path setting START=========
+outPutBase = "dist",
+path = {
+    html: {
+        input: "src/**/*.html",
+        output: outPutBase,
+        watch: "src/**/*.html"
+    },
+    pug: {
+        input: "src/**/*.pug",
+        output: outPutBase,
+        watch: "src/**/*.pug"
+    },
+    css: {
+        input: "src/scss/index.scss",
+        output: outPutBase,
+        outPutName: "app.css",
+        watch: "src/scss/**/*.scss"
+    },
+    js: {
+        input: "src/js/index.js",
+        output: outPutBase,
+        outPutName: "app.js",
+        watch: "src/**/*.js"
+    },
+    images:{
+        input: "src/images/**/*.{jpg,jpeg,png,gif,svg}",
+        output: `${outPutBase}/src/images`,
+        watch: "src/images/**/*.{jpg,jpeg,png,gif,svg}"
+    },
+    fonts:{
+        input: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}",
+        output: `${outPutBase}/src/fonts`,
+        watch: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}"
+    }
+};
+// =========path setting END=========
 // clean tasks
 const clean = () => {
-    return del(["dist"]);
+    return del([outPutBase]);
 }
 
 const cleanImages = () => {
-    return del(["dist/src/images"]);
+    return del([path.images.output]);
 }
 
 const cleanFonts = () => {
-    return del(["dist/src/fonts"]);
+    return del([path.fonts.output]);
 }
 
 // css tasks
 const css = () => {
-    return src("src/scss/index.scss")
+    return src(path.css.input)
             .pipe(mode.development( sourcemaps.init() ))
             .pipe(sass().on("error", sass.logError))
             .pipe(autoprefixer())
-            .pipe(rename("app.css"))
+            .pipe(rename(path.css.outPutName))
             .pipe(mode.production( csso() ))
             .pipe(mode.development( sourcemaps.write() ))
-            .pipe(dest("dist"))
+            .pipe(dest(path.css.output))
             .pipe(mode.development( browserSync.stream() ));
 } 
 
+//js tasks
 const js = () => {
-    return browserify("src/js/index.js")
+    return browserify(path.js.input)
         .transform(babelify, { "presets": ["@babel/preset-env"] })
         .bundle()
-        .pipe(source("app.js"))
-        .pipe(buffer())
+        .pipe(source(path.js.outPutName))//將browserify讀取的data轉成gulp flow format
+        .pipe(buffer())//轉完後不可直接做uglify,需緩存所有js完後
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(dest("dist"))
+        .pipe(dest(path.js.output))
         .pipe(mode.development( browserSync.stream() ));
-
-    // return src("src/**/*.js")
-    //         .pipe(babel({
-    //             presets: ["env"]
-    //         }))
-    //         .pipe(webpack({
-    //             mode: "development",
-    //             devtool: "inline-source-map",
-    //         }))
-    //         .pipe(mode.development( sourcemaps.init({ loadMaps: true }) ))
-    //         .pipe(rename("app.js"))
-    //         .pipe(mode.production( terser({ output: { comments: false} }) ))
-    //         .pipe(mode.development( sourcemaps.write() ))
-    //         .pipe(dest("dist"))
-    //         .pipe(mode.development( browserSync.stream() ));
 }
 
-// copy html
-const copyHTML = () => {
-    return src("src/*.html")
-            .pipe(dest("dist"));
+// pug tasks
+const pugTfHtml = () => {
+    return src(path.pug.input)
+        .pipe(pug({
+                pretty: mode.development() ? true : false,
+            })
+        )
+        .pipe(sourcemaps.write())
+        .pipe(dest(path.pug.output))
+        .pipe(mode.development( browserSync.stream() ));
 }
 
 // copy tasks
+const copyHTML = () => {
+    return src(path.html.input)
+            .pipe(dest(outPutBase));
+}
+
 const copyImages = () => {
-    return src("src/images/**/*.{jpg,jpeg,png,gif,svg}")
-            .pipe(dest("dist/src/images"));
+    return src(path.images.input)
+            .pipe(imageMin(
+                [
+                    imageMin.gifsicle({interlaced: true}),
+                    imageMin.mozjpeg({quality: 50, progressive: true}),
+                    imageMin.optipng({optimizationLevel: 5}),
+                    imageMin.svgo({
+                        plugins: [
+                            {removeViewBox: true},
+                            {cleanupIDs: false}
+                        ]
+                    })
+                ]
+            ))
+            .pipe(dest(path.images.output));
 }
 
 const copyFonts = () => {
-    return src("src/fonts/**/*.{eot,ttf,woff,woff2,svg}")
-            .pipe(dest("/dist/src/fonts"));
+    return src(path.fonts.input)
+            .pipe(dest(path.fonts.output));
 }
 
 // watch task
 const watchForChanges = () => {
-    watch("src/scss/**/*.scss", css);
-    watch("src/**/*.js", js);
-    watch("**/*.html").on("change", series(copyHTML, browserSync.reload));
-    watch("src/images/**/*.{jpg,jpeg,png,gif,svg}", series(cleanImages));
-    watch("src/fonts/**/*.{eot,ttf,woff,woff2,svg}", series(cleanFonts));
+    watch(path.html.watch).on("change", series(copyHTML, browserSync.reload));
+    watch(path.pug.watch, pugTfHtml);
+    watch(path.css.watch, css);
+    watch(path.js.watch, js);
+    watch(path.images.watch, series(cleanImages));
+    watch(path.fonts.watch, series(cleanFonts));
     // browserSync.watch("src/scss/**/*.scss", function (event, file) {
     //     if (event === "change") {
     //         css();
     //     }
     // });
-}
+    mode.development() && serverStart();
+}   
 
-((bs)=>{
-    if(bs && mode.development()) {
-        bs.init({
+const serverStart = () => {
+        browserSync.init({
             server: {
-                baseDir: "./"
+                baseDir: `./${outPutBase}`
             }
         });
-        
-        bs.emitter.on("init", function () {
+        browserSync.emitter.on("init", function () {
             console.log("Browsersync is running!");
         });
-    }
-})(browserSync)
+}
 
 // public tasks
-exports.default = series(clean, parallel(copyHTML, css, js, copyImages, copyFonts), watchForChanges);
-exports.build = series(clean, parallel(copyHTML, css, js, copyFonts, copyImages));
+exports.default = series(clean, parallel(copyHTML, pugTfHtml, css, js, copyImages, copyFonts), watchForChanges);
+exports.build = series(clean, parallel(copyHTML, pugTfHtml, css, js, copyFonts, copyImages));
