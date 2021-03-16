@@ -5,11 +5,15 @@ html(lang="pug")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         title GULP 4
-        link(type="text/css" href="app.css" rel="stylesheet")
+        link(type="text/css" href="app.css?v=##version##" rel="stylesheet")
     body
         header 
             h1
                 span
+            - var numbers = ['one', 'two', 'three']
+            ul
+            each number in numbers
+                li= number
         section
             a(class="aTagStyle" href="https://github.com/gulpjs/gulp#readme") github
             <p>
@@ -25,4 +29,6 @@ html(lang="pug")
             iframe(width="80%" height="600px" src="https://www.youtube.com/embed/3R5Coj4JxTo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
             hr
             iframe(width="80%" height="600px" src="https://www.youtube.com/embed/Ojz4PUbMNa0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen)
-        script(lang="javascript" src="app.js")
+        script(lang="javascript" src="app.js?v=##version##")
+
+            

@@ -1,72 +1,75 @@
 
-const { src, dest, watch, series, parallel } = require("gulp"),
-//pug
-pug = require('gulp-pug'),
+const
+    { src, dest, watch, series, parallel } = require("gulp"),
+    //pug
+    pug = require('gulp-pug'),
 
-// css
-sass = require("gulp-dart-sass"),
-autoprefixer = require("gulp-autoprefixer"),
-csso = require("gulp-csso"),
+    // css
+    sass = require("gulp-dart-sass"),
+    autoprefixer = require("gulp-autoprefixer"),
+    csso = require("gulp-csso"),
 
-//處理export
-browserify = require("browserify"),
-//ES6 翻譯成 ES5
-babelify = require("babelify"),
-buffer = require("vinyl-buffer"),
-uglify = require("gulp-uglify"),
+    //處理export
+    browserify = require("browserify"),
+    //ES6 翻譯成 ES5
+    babelify = require("babelify"),
+    buffer = require("vinyl-buffer"),
+    uglify = require("gulp-uglify"),
 
-//other
-source = require("vinyl-source-stream"),
-sourcemaps = require("gulp-sourcemaps"),
-del = require("del"),
-rename = require("gulp-rename");
-imageMin = require('gulp-imagemin'),
+    //other
+    source = require("vinyl-source-stream"),
+    sourcemaps = require("gulp-sourcemaps"),
+    del = require("del"),
+    rename = require("gulp-rename"),
+    imageMin = require('gulp-imagemin'),
+    replace = require('gulp-replace'),
 
-/**
- * gulp-mode
- * 
- * 注意: O -> npm run dev / build
- *      X -> gulp / gulp build
- */
-mode = require("gulp-mode")(), 
-browserSync = require("browser-sync").create(),
+    /**
+     * gulp-mode
+     * 
+     * 注意: O -> npm run dev / build
+     *      X -> gulp / gulp build
+     */
+    mode = require("gulp-mode")(), 
+    browserSync = require("browser-sync").create(),
 
-// =========path setting START=========
-outPutBase = "dist",
-path = {
-    html: {
-        input: "src/**/*.html",
-        output: outPutBase,
-        watch: "src/**/*.html"
-    },
-    pug: {
-        input: "src/**/*.pug",
-        output: outPutBase,
-        watch: "src/**/*.pug"
-    },
-    css: {
-        input: "src/scss/index.scss",
-        output: outPutBase,
-        outPutName: "app.css",
-        watch: "src/scss/**/*.scss"
-    },
-    js: {
-        input: "src/js/index.js",
-        output: outPutBase,
-        outPutName: "app.js",
-        watch: "src/**/*.js"
-    },
-    images:{
-        input: "src/images/**/*.{jpg,jpeg,png,gif,svg}",
-        output: `${outPutBase}/src/images`,
-        watch: "src/images/**/*.{jpg,jpeg,png,gif,svg}"
-    },
-    fonts:{
-        input: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}",
-        output: `${outPutBase}/src/fonts`,
-        watch: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}"
-    }
-};
+    // =========path setting START=========
+    outPutBase = "dist",
+    path = {
+        html: {
+            input: "src/**/*.html",
+            output: outPutBase,
+            watch: "src/**/*.html"
+        },
+        pug: {
+            input: "src/**/*.pug",
+            output: outPutBase,
+            watch: "src/**/*.pug"
+        },
+        css: {
+            input: "src/scss/index.scss",
+            output: outPutBase,
+            outPutName: "app.css",
+            watch: "src/scss/**/*.scss"
+        },
+        js: {
+            input: "src/js/index.js",
+            output: outPutBase,
+            outPutName: "app.js",
+            watch: "src/**/*.js"
+        },
+        images:{
+            input: "src/images/**/*.{jpg,jpeg,png,gif,svg}",
+            output: `${outPutBase}/src/images`,
+            watch: "src/images/**/*.{jpg,jpeg,png,gif,svg}"
+        },
+        fonts:{
+            input: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}",
+            output: `${outPutBase}/src/fonts`,
+            watch: "src/fonts/**/*.{eot,ttf,woff,woff2,svg}"
+        }
+    };
+
 // =========path setting END=========
 // clean tasks
 const clean = () => {
@@ -82,7 +85,7 @@ const cleanFonts = () => {
 }
 
 // css tasks
-const css = () => {
+const css = () => { 
     return src(path.css.input)
             .pipe(mode.development( sourcemaps.init() ))
             .pipe(sass().on("error", sass.logError))
@@ -103,6 +106,7 @@ const js = () => {
         .pipe(buffer())//轉完後不可直接做uglify,需緩存所有js完後
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(uglify())
+        .pipe(replace("##version##", Date.now()))
         .pipe(sourcemaps.write())
         .pipe(dest(path.js.output))
         .pipe(mode.development( browserSync.stream() ));
@@ -116,6 +120,7 @@ const pugTfHtml = () => {
             })
         )
         .pipe(sourcemaps.write())
+        .pipe(replace("##version##", Date.now()))
         .pipe(dest(path.pug.output))
         .pipe(mode.development( browserSync.stream() ));
 }

@@ -9,6 +9,4 @@ console.log(calculate(10,6));
 const span = document.querySelector("header span");
 span.textContent = `${sayHello.name}`;
 
-
-    console.log(process.env)
-    console.log("@@@@@" + process.env.BASE_URL)
+console.log(process.env.test)
