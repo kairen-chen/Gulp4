@@ -15,6 +15,7 @@ const
     babelify = require("babelify"),
     buffer = require("vinyl-buffer"),
     uglify = require("gulp-uglify"),
+    minify = require('gulp-minify');
 
     //other
     source = require("vinyl-source-stream"),
@@ -108,6 +109,12 @@ const js = () => {
         .pipe(uglify())
         .pipe(replace("##version##", Date.now()))
         .pipe(sourcemaps.write())
+        .pipe(mode.production( minify({
+            ext: {
+                min: '.js' // Set the file extension for minified files to just .js
+            },
+            noSource: true // Don’t output a copy of the source file
+        }) ))
         .pipe(dest(path.js.output))
         .pipe(mode.development( browserSync.stream() ));
 }
@@ -115,7 +122,7 @@ const js = () => {
 // pug tasks
 const pugTfHtml = () => {
     return src(path.pug.input)
-        .pipe(pug({
+        .pipe( pug({
                 pretty: mode.development() ? true : false,
             })
         )
@@ -133,7 +140,7 @@ const copyHTML = () => {
 
 const copyImages = () => {
     return src(path.images.input)
-            .pipe(imageMin(
+            .pipe( imageMin(
                 [
                     imageMin.gifsicle({interlaced: true}),
                     imageMin.mozjpeg({quality: 50, progressive: true}),
