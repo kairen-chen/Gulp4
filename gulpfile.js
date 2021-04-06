@@ -124,6 +124,10 @@ const pugTfHtml = () => {
     return src(path.pug.input)
         .pipe( pug({
                 pretty: mode.development() ? true : false,
+                data: {
+                    // ref -> https://tusharghate.com/rendering-pug-templates-with-multiple-data-files
+                    this_gulp_message: (mode.development() ? '開發' : '產品') + '_GULP 4'
+                }
             })
         )
         .pipe(sourcemaps.write())

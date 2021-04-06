@@ -4,13 +4,14 @@ html(lang="pug")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        title GULP 4
+        title= this_gulp_message
         link(type="text/css" href="app.css?v=##version##" rel="stylesheet")
     body
         header 
             h1
                 span
             a(href="./page/about.html") about
+            div(class=`${this_gulp_message}`) class is gulp_message
             - var numbers = ['one', 'two', 'three']
             ul
             each number in numbers
