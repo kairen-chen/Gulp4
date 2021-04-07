@@ -1,0 +1,59 @@
+header 
+    h1
+        span
+    hr
+    //- ----------------------------------------------------------
+    mixin article(title='Default Title')
+        .article
+            .article-wrapper
+            h1= title
+            if block
+                block
+            else
+                p No content provided
+    +article()
+
+    +article('Hello world')
+
+    +article('Hello world')
+        p This is my
+        p Amazing article
+
+    hr
+    //- ----------------------------------------------------------
+    mixin link(href, name)
+        //- != 避免轉譯
+        a(class!=attributes.test href=href)= name
+
+    +link('/foo', 'foo')(test="btn")
+
+    hr
+    //- ----------------------------------------------------------
+    mixin link(href, name)
+        a(href=href)&attributes(attributes)= name
+
+    +link('/foo', 'foo')(class="btn",id="wer")
+
+    hr
+    //- ----------------------------------------------------------
+    mixin list(id, ...items)
+        ul(id= id)
+            each item in items
+            li= item
+
+    +list('my-list', 1, 2, 3, 4)
+
+    hr
+
+    div
+        a(href="./page/about.html") about
+
+    ul 
+        each petName in pets 
+        li= petName
+
+    div(class=`${this_gulp_message}`) class is gulp_message
+    - var numbers = ['one', 'two', 'three']
+    ul
+    each number in numbers
+        li= number
