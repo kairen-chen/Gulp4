@@ -3,7 +3,7 @@ const { src, dest, watch, series, parallel } = require("gulp"),
   sass = require("gulp-dart-sass"),
   autoprefixer = require("gulp-autoprefixer"),
   csso = require("gulp-csso"),
-  //other
+  // other
   sourcemaps = require("gulp-sourcemaps"),
   del = require("del"),
   imageMin = require("gulp-imagemin"),
