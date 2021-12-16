@@ -1,0 +1,24 @@
+@import "../common/_common.scss";
+main {
+  margin-top: #{$MobileHeaderHeight};
+  .mainContainer {
+    width: 100%;
+    padding: 40px;
+    .accordion-button {
+      font-size: 20px !important;
+    }
+    .accordion {
+      .moreLayer {
+        .accordion {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+  .contentFooter {
+    flex-direction: column;
+    .orangeBtn {
+      margin-top: 20px;
+    }
+  }
+}

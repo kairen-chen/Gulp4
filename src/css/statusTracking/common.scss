@@ -1,0 +1,103 @@
+@import "../common/_common.scss";
+main {
+    width: 100%;
+    min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+    margin-top: #{$DesktopHeaderHeight};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: map-get($color, White);
+    margin-top: #{$DesktopHeaderHeight};
+    .mainContainer {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        flex-direction: column;
+        width: #{$ContainerMaxWidth};
+        .title{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .normalBlock{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            width: 100%;
+            .title{
+                margin-bottom: 0;
+                color: map-get($color,"Gary50" );
+            }
+            .col{
+                display: flex;
+                width: 100%;
+                margin-bottom: 20px;
+                .content{
+                    padding-left: 10px;
+                    display: flex;
+                    align-items: center;
+                    &:not(:last-child){
+                        margin-right: 20px;
+                    }
+                    .title{
+                        margin-right: 20px;
+                    }
+                
+                    input{
+                        flex-grow: 1 ;
+                    }
+                }
+                .w100{
+                    width: 100%;
+                }
+                .title{
+                    font-size: 14px;
+                }
+            }
+        }
+        .btnContainer{
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .table{
+            border:1px solid map-get($color, "White50");
+            th,td{
+                border:1px solid map-get($color, "White50");
+            }
+            label{
+                color: map-get($color, "Blue10");
+            }
+            a{
+                text-decoration: none;
+            }
+            &>:not(:last-child)>:last-child>*{
+                border-bottom-color: map-get($color, "White50");
+            }
+            thead>tr{
+                background: map-get($color, "White30");
+                text-align: center;
+            }
+            
+        }
+        .table-striped>tbody>tr:nth-of-type(odd){
+            --bs-table-accent-bg: map-get($color, White);
+        }
+        .table-striped>tbody>tr:nth-of-type(even){
+            background: map-get($color, "White30");
+        }
+        
+        input[type="file"]{
+            display: none;
+        }
+    }
+}
+
+
+@include BreakPointSmall {
+  @import "statusTrackingMobile.scss";
+}

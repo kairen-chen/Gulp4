@@ -1,0 +1,130 @@
+@import "../common/_common.scss";
+main {
+    width: 100%;
+    min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+    margin-top: #{$DesktopHeaderHeight};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: map-get($color, White);
+    margin-top: #{$DesktopHeaderHeight};
+    .mainContainer {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        flex-direction: column;
+        width: #{$ContainerMaxWidth};
+        .title{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .normalBlock{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            width: 100%;
+            .title{
+                margin-bottom: 30px;
+                color: map-get($color,"Gary50");
+            }
+            .col{
+                position: relative;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                margin-bottom: 30px;
+                .content{
+                    padding-right:0;
+                    padding-left: 10px;
+                    display: flex;
+                    align-items: center;
+                    flex:1;
+                    min-height: 38px;
+                    &:not(:last-child){
+                        margin-right: 20px;
+                    }
+                    .title{
+                        margin-right: 20px;
+                        flex-basis: 60px;
+                        min-width: 60px;
+                        margin-bottom: 0;
+                        &.mb20{
+                            margin-bottom: 23px;
+                        }
+                    }
+                    .selectContainer{
+                        width: 100%;
+                        .bootstrap-select{
+                            width: 100%;
+                            .dropdown-toggle{
+                                background-color: map-get($color, White);
+                                box-shadow: unset;
+                                border: 1px solid map-get($color, "White20");
+                                &:focus{
+                                    outline: none !important;
+                                }
+                                &::after{
+                                    content: unset;
+                                }
+                            }
+                        }
+                        .dropdown-menu{
+                            overflow: auto !important;
+                            max-height: 200px;
+                            li{
+                                margin: 0 10px;
+                            }
+                            .dropdown-item{
+                                &:hover{
+                                    color: map-get($color, "Orange10");
+                                    background-color: map-get($color, "Orange20");
+                                }
+                                .bs-ok-default:after{
+                                    border-color: map-get($color, "Orange10");
+                                }
+                            }
+                        }
+                        img{
+                            position: absolute;
+                            right: 10px;
+                            top:10px;
+                            width: 20px;
+                            pointer-events: none;
+                        }
+                    }
+                    select,
+                    input{
+                        flex-grow: 1 ;
+                    }
+                    select{
+                        option[disabled]{
+                            display: none;
+                        }
+                    }
+                    .form-select{
+                        width: 0;
+                    }
+                }
+                .title{
+                    font-size: 14px;
+                }
+            }
+        }
+    .btnContainer{
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+    }
+  }
+}
+
+@include BreakPointSmall {
+  @import "estimationMobile.scss";
+}
+

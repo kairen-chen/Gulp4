@@ -1,0 +1,95 @@
+@import "../common/_common.scss";
+main {
+  width: 100%;
+  min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+  margin-top: #{$DesktopHeaderHeight};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: map-get($color, White);
+  margin-top: #{$DesktopHeaderHeight};
+  .mainContainer {
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    flex-direction: column;
+    .normalBlock {
+      width: #{$ContainerMaxWidth};
+      .nav-tabs {
+        border-color: map-get($color, "Gary70");
+        .nav-link {
+          color: map-get($color, "Gary80");
+          font-weight: bold;
+          &.active {
+            color: map-get($color, "Black20");
+            background-color: map-get($color, "White10");
+            border-color: map-get($color, "Orange10") map-get($color, "Gary70")
+              map-get($color, "White10");
+            border-width: 4px 1px 1px 1px;
+          }
+        }
+      }
+      .tab-content {
+        padding: 40px;
+        border-style: solid;
+        border-width: 1px;
+        border-color: map-get($color, "Gary70");
+        border-top: 0px;
+        border-radius: 0px 0px 4px 4px;
+        background-color: map-get($color, "White10");
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .formContainer {
+          display: flex;
+          width: 100%;
+          .content {
+            flex: 1;
+            .title {
+              display: inline-block;
+              width: 70px;
+              &.titleTwoWord {
+                width: 40px;
+              }
+            }
+            > div {
+              margin-bottom: 20px;
+              input[type="text"] {
+                width: calc(100% - 100px);
+                padding: 10px;
+                border: 1px solid map-get($color, "Gary70");
+                border-radius: 4px;
+              }
+            }
+            .context {
+              font-weight: bold;
+            }
+          }
+          .radioGroup {
+            display: flex;
+            align-items: center;
+            .radio {
+              margin: 0 10px 0 5px;
+            }
+            .center {
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+        .orangeBtn {
+          margin-top: 60px;
+        }
+      }
+    }
+  }
+}
+
+@include BreakPointSmall {
+  @import "memberMobile.scss";
+}

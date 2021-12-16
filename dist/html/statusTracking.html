@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/header/common.css">
+    <link rel="stylesheet" href="../css/statusTracking/common.css">
+    <link rel="stylesheet" href="../css/footer/common.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <a href="/html/index.html" target="_self">
+                <img class="logo" src="https://www.fun2repair.com/img/logo.png"></img>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="deskTopShow" src="../images/web/page_banner_status_tracking.jpg" class="d-block w-100"
+                        alt="...">
+                    <img class="mobileShow" src="../images/mobile/mobile_page_banner_status_tracking.png"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="mainContainer">
+            <div class="title">
+                維修進度查詢
+                <div class="bottomLine"></div>
+            </div>
+            <form class="normalBlock" action="">
+                <div class="col">
+                    <div class="content w100">
+                        <span class="title">手機號碼</span>
+                        <input type="tel" required="required">
+                    </div>
+                    <div class="content w100">
+                        <span class="title">維修單號</span>
+                        <input type="text" required="required">
+                    </div>
+                </div>
+                <div class="btnContainer">
+                    <div class="garyBtn">取消</div>
+                    <input type="submit" class="orangeBtn" value="查詢">
+                </div>
+            </form>
+            <table class="deskTopShow table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">維修單號</th>
+                        <th scope="col">申請日期</th>
+                        <th scope="col">申請人</th>
+                        <th scope="col">手機號</th>
+                        <th scope="col">重新上傳附件</th>
+                        <th scope="col">報償金額</th>
+                        <th scope="col">目前狀態</th>
+                        <th scope="col">詳細資料</th>
+                        <th scope="col">詢問</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>20210712003</td>
+                        <td>2021-07-12 16:09:56</td>
+                        <td>Mdo</td>
+                        <td>098****705</td>
+                        <td>
+                            <a href="/html/uploadImages.html" target="_self">重新上傳附件</a>
+                        </td>
+                        <td>0</td>
+                        <td>申請完成</td>
+                        <td><a href="/html/statusTrackingDetail.html">詳細資料</a></td>
+                        <td><a href="">詢問</a></td>
+                    </tr>
+                    <tr>
+                        <td>20210712003</td>
+                        <td>2021-07-12 16:09:56</td>
+                        <td>Mdo</td>
+                        <td>098****705</td>
+                        <td>
+                            <a href="/html/uploadImages.html" target="_self">重新上傳附件</a>
+                        </td>
+                        <td>38000</td>
+                        <td>申請完成</td>
+                        <td><a href="/html/statusTrackingDetail.html">詳細資料</a></td>
+                        <td><a href="">詢問</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mobileShow">
+                <div class="orderContainer">
+                    <span>維修單號</span>
+                    <span>20210712003</span>
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td>申請日期</td>
+                                <td>2021-07-12 16:09:56</td>
+                            </tr>
+                            <tr>
+                                <td>申請人</td>
+                                <td>Angelina</td>
+                            </tr>
+                            <tr>
+                                <td>手機號</td>
+                                <td>098****705</td>
+                            </tr>
+                            <tr>
+                                <td>重新上傳附件</td>
+                                <td>
+                                    <a href="/html/uploadImages.html" target="_self">重新上傳附件</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>報價金額</td>
+                                <td>1200</td>
+                            </tr>
+                            <tr>
+                                <td>目前狀態</td>
+                                <td>申請完成</td>
+                            </tr>
+                            <tr>
+                                <td>詳細資料</td>
+                                <td><a href="/html/statusTrackingDetail.html">詳細資料</a></td>
+                            </tr>
+                            <tr>
+                                <td>詢問</td>
+                                <td><a href="">詢問</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="orderContainer">
+                    <span>維修單號</span>
+                    <span>20210712003</span>
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td>申請日期</td>
+                                <td>2021-07-12 16:09:56</td>
+                            </tr>
+                            <tr>
+                                <td>申請人</td>
+                                <td>Angelina</td>
+                            </tr>
+                            <tr>
+                                <td>手機號</td>
+                                <td>098****705</td>
+                            </tr>
+                            <tr>
+                                <td>重新上傳附件</td>
+                                <td>
+                                    <a href="/html/uploadImages.html" target="_self">重新上傳附件</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>報價金額</td>
+                                <td>1200</td>
+                            </tr>
+                            <tr>
+                                <td>目前狀態</td>
+                                <td>申請完成</td>
+                            </tr>
+                            <tr>
+                                <td>詳細資料</td>
+                                <td><a href="/html/statusTrackingDetail.html">詳細資料</a></td>
+                            </tr>
+                            <tr>
+                                <td>詢問</td>
+                                <td><a href="">詢問</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

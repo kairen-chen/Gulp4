@@ -1,0 +1,34 @@
+@import "../common/_common.scss";
+main {
+   margin-top: #{$MobileHeaderHeight};
+    .mainContainer {
+        width: 100%;
+        padding: 40px;
+        .content{
+            .title{
+                display: block;
+                margin: 0 0 10px;
+            }
+            input{
+                width: 100%;
+            }
+            &.verifyCode{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                input{
+                    margin: 10px 0;
+                }
+            }
+        }
+        .remember{
+            text-align: left;
+            #remember{
+                margin-left:0;
+            }
+        }
+    }
+    .orangeBtn{
+         width: 100%;
+    }
+}

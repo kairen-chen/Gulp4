@@ -1,0 +1,39 @@
+@import "../common/_common.scss";
+main{
+    margin-top: #{$MobileHeaderHeight};
+    .mainContainer{
+        width: 100%;
+        padding: 40px;
+        .normalBlock {
+            width: 100%;
+            .w64{
+                width: 100%;
+            }
+            .col{
+                margin-bottom: 20px;
+                .content{
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: flex-start;
+                    padding-left: 0;
+                    .contextContainer,
+                    .form-select,
+                    textarea,
+                    input{
+                        width: 100%;
+                    }
+                    .title{
+                        margin-bottom: 10px;
+                        flex-basis: auto;   
+                        &.mb20{
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+            }
+            .btnContainer{
+                margin-top: 25px;
+            }
+        }
+    }
+}

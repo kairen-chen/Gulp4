@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/header/common.css">
+    <link rel="stylesheet" href="../css/index/common.css">
+    <link rel="stylesheet" href="../css/footer/common.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <a href="/html/index.html" target="_self">
+                <img class="logo" src="https://www.fun2repair.com/img/logo.png"></img>
+            </a>
+        </div>
+        <div class="right">
+            <div class="btnStyle">
+                <img class="arrow" src="../images/mobile/mobile_ic_arrow_back.png" />
+                <span class="deskTopShow">回上頁</span>
+            </div>
+            <a class="btnStyle deskTopShow" href="/html/register.html" target="_self">
+                <img class="arrow" src="../images/mobile/mobile_ic_join.png" />
+                <span>加入會員</span>
+            </a>
+            <a class="btnStyle deskTopShow" href="/html/login.html" target="_self">
+                <img class="arrow" src="../images/web/ic_login.png" />
+                <span>登入</span>
+            </a>
+            <div class="btnStyle">
+                <img class="arrow" src="../images/mobile/mobile_ic_user.png" />
+                Tom
+                <div class="_tooltip">
+                    <a class="item" href="/html/member.html" target="_self"> 
+                        <img class="arrow" src="../images/mobile/mobile_ic_user_profile.png" />
+                        <span>會員管理</span>
+                    </a>
+                    <div class="item">
+                        <img class="arrow" src="../images/mobile/mobile_ic_edit_pw.png" />
+                        <span>修改密碼</span>
+                    </div>
+                    <div class="item">
+                        <img class="arrow" src="../images/mobile/mobile_ic_logout.png" />
+                        <span>登 出</span>
+                    </div>
+                </div>
+            </div>
+            <div class="btnStyle mobileShow menu">
+                <img src="../images/mobile/mobile_ic_menu.png" alt="">
+                <div class="_tooltip">
+                    <a class="item" href="/html/register.html" target="_self">
+                        <img class="arrow" src="../images/mobile/mobile_ic_join.png" />
+                        <span>加入會員</span>
+                    </a>
+                    <a class="item"  href="/html/login.html" target="_self">
+                        <img class="arrow" src="../images/web/ic_login.png" />
+                        <span>登入</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                    aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="../images/web/banner01.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="../images/web/banner02.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="../images/web/banner03.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="../images/web/banner04.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="../images/web/banner05_other.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <div class="mainContainer white30">
+            <div class="title">您需要什麼協助?<div class="bottomLine"></div>
+            </div>
+            <div class="normalBlock service">
+                <a class="item" href="/html/aboutUs.html" target="_self">
+                    <img src="../images/web/ic_main_about_us.png" alt="">
+                    <div class="describe">關於我們</div>
+                </a>
+                <a class="item" href="/html/orderForm.html" target="_self">
+                    <img src="../images/web/ic_main_repair_service.png" alt="">
+                    <div class="describe">維修服務</div>
+                </a>
+                <a class="item" href="/html/statusTracking.html" target="_self">
+                    <img src="../images/web/ic_main_status.png" alt="">
+                    <div class="describe">維修進度</div>
+                </a>
+                <a class="item" href="/html/troubleShooting.html" target="_self">
+                    <img src="../images/web/ic_main_troubleshooting.png" alt="">
+                    <div class="describe">疑難排解</div>
+                </a>
+                <a class="item" href="/html/estimation.html" target="_self">
+                    <img src="../images/web/ic_main_price.png" alt="">
+                    <div class="describe">簡易詢價</div>
+                </a>
+            </div>
+        </div>
+        <div class="mainContainer linear">
+            <div class="title">服務流程<div class="bottomLine"></div>
+            </div>
+            <div class="normalBlock">
+                <div class="line deskTopShow"></div>
+                <div class="item">
+                    <div class="number">1</div>
+                    <a href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                        <img src="../images/web/ic_process_01.png" alt="">
+                        <div class="line mobileShow"></div>
+                    </a>
+                    <div class="describe">提交訂單</div>
+                </div>
+                <div class="item">
+                    <div class="number">2</div>
+                    <a href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                        <img src="../images/web/ic_process_02.png" alt="">
+                        <div class="line mobileShow"></div>
+                    </a>
+                    <div class="describe">到府收件</div>
+                </div>
+                <div class="item">
+                    <div class="number">3</div>
+                    <a href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                        <img src="../images/web/ic_process_03.png" alt="">
+                        <div class="line mobileShow"></div>
+                    </a>
+                    <div class="describe">檢測與報價</div>
+                </div>
+                <div class="item">
+                    <div class="number">4</div>
+                    <a href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                        <img src="../images/web/ic_process_04.png" alt="">
+                        <div class="line mobileShow"></div>
+                    </a>
+                    <div class="describe">順豐派送</div>
+                </div>
+                <div class="item">
+                    <div class="number">5</div>
+                    <a href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                        <img src="../images/web/ic_process_05.png" alt="">
+                    </a>
+                    <div class="describe">結案寄回</div>
+                </div>
+            </div>
+        </div>
+        <div class="mainContainer white production">
+            <div class="title">產品規格<div class="bottomLine"></div>
+            </div>
+            <div class="normalBlock">
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_01.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_02.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_03.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_04.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_05.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+                <a class="item" href="https://www.google.com.tw/?hl=zh_TW" target="_blank">
+                    <img src="../images/web/banner_image_01.png" alt="">
+                    <div class="describe">Pixel 3</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- 產品規格 Modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            產品規格
+        </button>
+        <div class="modal fade production" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title" id="exampleModalLabel">產品規格 > 其他品牌</div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="context">
+                            <img src="../images/web/popup_image_construction.png" alt="">
+                            <span class="describe">敬請期待</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- 維護公告 Modal -->
+        <div class="modal fade maintain" id="maintainModal" tabindex="-1" aria-labelledby=maintainModalLabel"
+            aria-modal="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="context">
+                            <div class="left">
+                                <img src="../images/web/banner_maintanance.png" alt="">
+                            </div>
+                            <div class="right">
+                                <div class="title">【維護公告】</div>
+                                <div class="describe">為了提供更穩定的網頁環境，將進行
+                                    維護更新作業。維護期間無法進行報修與
+                                    查看報修單內容且將停服務，敬請見諒。</div>
+                                <div class="dataContext">
+                                    <span class="describe">維護時間：</span>
+                                    <div>
+                                        <span class="data">2021 年 7 月 13 日（二）</span>
+                                        <div class="data">08:00 ~ 18:00</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btnContainer">
+                        <div class="orangeBtn close">
+                            確認
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="content">
+                <img class="emailIcon" src="../images/web/ic_footer_email.png" alt="">
+                <div>
+                    <div>週一至週五 09:00-17:30</div>
+                    <a href="mailto:F2R_EMAIL">fun2repair@fih-foxco</a>
+                </div>
+            </div>
+            <div class="content center">
+                <div class="col">
+                    <img src="../images/web/footer_qrcode.png" alt="">
+                    <div>維修查詢</div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col f_start mobile">
+                    <div class="row">
+                        <a href="">隱私權政策</a>
+                        <a href="">服務條款</a>
+                    </div>
+                    <div class="row">
+                        <a href="">順豐快遞查詢</a>
+                        <a href="/html/customerService.html" target="_self">聯繫客服</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col">
+                <img class="logo" src="../images/web/footer_f2r_logo.png" alt="">
+                <div>@2020 Fun2Repair All</div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+        (function () {
+            let myModal = new bootstrap.Modal(document.getElementById('maintainModal'));
+            myModal.show();
+            document.querySelector(".close").addEventListener('click', function () {
+                myModal.hide();
+            })
+        })()
+    </script>
+</body>
+
+</html>

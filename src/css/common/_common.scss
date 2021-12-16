@@ -1,0 +1,104 @@
+@import "_rwd.scss";
+@import "_variables.scss";
+@import "_reset.scss";
+
+
+@include BreakPointLarge {
+  .mobileShow{
+    display: none;
+  }
+}
+
+@include BreakPointSmall {
+  .deskTopShow{
+    display: none;
+  }
+}
+
+.orangeBtn {
+  display: inline-block;
+  padding: 10px 40px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 4px;
+  background-color: map-get($color, Orange10);
+  color: map-get($color, White);
+  border: 0;
+}
+.garyBtn{
+    display: inline-block;
+    padding: 7px 40px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 4px;
+    background: map-get($color, "Gary50");
+    color: map-get($color, White);
+    margin-right: 10px;
+}
+
+.bottomLine{
+    margin: 0 auto;
+    width: 80px;
+    background-color: #ff7300;
+    height: 5px;
+    margin-top: 10px;
+}
+.accordion-button{
+  border:0;
+  font-size: 20px;
+  font-weight: bold;
+  color: map-get($color,"Gary80" );
+  &:not(.collapsed){
+    background: map-get($color,White );
+    color: map-get($color,"Gary80" );
+  }
+  &:focus{
+    box-shadow: none;
+  }
+}
+
+.highlight{
+  color:red;
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"]{
+  padding: 10px;
+  border: 1px solid map-get($color,"White20");
+  border-radius: 4px;
+  outline: none;
+}
+
+input[type="radio"]{
+  height: 16px;
+  width: 16px;
+}
+
+.form-select:focus{
+   box-shadow: none;
+   border-color:  map-get($color,"White20");
+}
+
+.carousel-indicators [data-bs-target]{
+  background-color: map-get($color,"White20");
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+  background-color: map-get($color,"White20");
+  border-radius: 4px;
+  opacity: .3;
+}
+
+.carousel-item{
+  img{
+    width: 100%;
+  }
+}
+
+ul{
+  list-style: disc;
+}

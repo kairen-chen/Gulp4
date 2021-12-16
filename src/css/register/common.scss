@@ -1,0 +1,174 @@
+@import "../common/_common.scss";
+main {
+  width: 100%;
+  min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+  margin-top: #{$DesktopHeaderHeight};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: map-get($color, White10);
+  .mainContainer {
+    padding: 40px 0 0;
+    font-size: 14px;
+    width: #{$ContainerMaxWidth};
+    .center{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .title {
+      margin-bottom: 40px;
+      font-weight: bold;
+      font-size: 20px;
+      text-align: center;
+    }
+    .subTitle {
+      display: inline-block;
+      width: 380px;
+      margin-bottom: 40px;
+      text-align: center;
+      .highlight {
+        color: red;
+      }
+    }
+    .formContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .content {
+      font-size: 14px;
+      margin-bottom: 20px;
+      width: 100%;
+      .title {
+        width: 30px;
+        font-size: 14px;
+        margin-right: 5px;
+        &:not(:first-child) {
+          margin-left: 10px;
+        }
+      }
+      .checkPassword {
+        display: inline-block;
+        margin-bottom: 0;
+        position: relative;
+        top: -12px;
+      }
+      input {
+        padding: 8px;
+        border: 1px solid map-get($color, White20);
+        border-radius: 4px;
+        outline: none;
+        vertical-align:middle;
+        &[type="radio"]{
+          margin-bottom: 3px;
+        }
+        &:focus {
+          border: 1px solid map-get($color, Orange10);
+          box-shadow: 1px;
+        }
+        &.row_3w {
+          width: calc(#{$ContainerMaxWidth} / 2.75);
+        }
+        &.row_2w {
+          width: calc(#{$ContainerMaxWidth} / 2.24);
+        }
+      }
+      &.verifyCode {
+        display: flex;
+        margin: 50px 0;
+        justify-content: center;
+        align-items: flex-start;
+        align-self: center;
+        input {
+          width: 150px;
+        }
+        span {
+          color: map-get($color, "Blue10");
+        }
+        img {
+          min-width: 100px;
+        }
+        .phoneVerify {
+          display: inline-block;
+          border: 1px solid map-get($color, "Gary40");
+          padding: 10px 20px;
+          border-radius: 4px;
+          text-align: center;
+        }
+        .inputContent {
+          display: flex;
+          flex-direction: column;
+          margin: 0 30px;
+        }
+      }
+      .radioGroup {
+        .radio {
+          width: auto;
+          margin-left: 10px;
+        }
+      }
+    }
+    .checkPasswordContent{
+      display: flex;
+      align-items: baseline;
+    }
+
+    a {
+      text-decoration: none;
+    }
+    .blue {
+      display: inline-flex;
+      color: map-get($color, "Blue10");
+      margin-top: 10px;
+    }
+    .privacyContainer {
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      width: 100%;
+      .title {
+        color: map-get($color, "Gary50");
+        margin-bottom: 20px;
+      }
+      .accordion{
+        min-width: #{$ContainerMaxWidth};
+        text-align: left;
+        margin-bottom: 20px;
+        .accordion-body{
+          max-height: 500px;
+          overflow-y: auto;
+        }
+        .line{
+          margin: 0 auto;
+          width: calc(100% - 40px);
+          border-top:1px solid map-get($color, "Gary110");
+        }
+        .accordion-button:not(.collapsed){
+          box-shadow: unset;
+        }
+      }
+    }
+    .privacyContainer{
+      .title1{
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .title2{
+        font-size: 14px;
+        font-weight: bold;
+      }
+    }
+    .orangeBtn{
+      align-self: center;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+  }
+}
+
+
+@include BreakPointSmall {
+  @import "registerMobile.scss";
+}

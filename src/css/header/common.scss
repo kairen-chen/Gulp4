@@ -1,0 +1,89 @@
+@import "../common/_common.scss";
+
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 100px;
+  font-size: 14px;
+  top: 0;
+  background-color: rgba(256, 256, 256, 0.8);
+  width: 100%;
+  z-index: 10;
+  .left {
+    .logo {
+      width: 270px;
+    }
+  }
+  .right {
+    display: flex;
+    align-items: baseline;
+    .btnStyle {
+      border: 1px solid map-get($color, Gary10);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-weight: bold;
+      position: relative;
+      cursor: pointer;
+      .arrow {
+        width: 20px;
+      }
+      &:not(:first-child) {
+        margin-left: 10px;
+      }
+      &:hover {
+        ._tooltip {
+          display: block;
+        }
+      }
+      ._tooltip {
+        &:hover {
+          display: block;
+        }
+        &:after {
+          content: "";
+          width: 120px;
+          height: 20px;
+          top: -20px;
+          left: 0;
+          position: absolute;
+        }
+        display: none;
+        position: absolute;
+        width: 120px;
+        top: 48px;
+        left: 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 16px 0 map-get($color, "Gary40");
+        background-color: #fff;
+        text-align: center;
+        .item {
+          padding: 10px 15px;
+          display: flex;
+          &:hover {
+            color: map-get($color, "White20");
+          }
+          &:not(:last-child) {
+            border-bottom: 1px solid map-get($color, "White20");
+          }
+          span {
+            flex: 1;
+          }
+        }
+      }
+    }
+    a {
+      text-decoration: none;
+      color: map-get($color, "Black20");
+    }
+  }
+}
+
+@include BreakPointLarge {
+  @import "headerDesktop.scss";
+}
+
+@include BreakPointSmall {
+  @import "headerMobile.scss";
+}

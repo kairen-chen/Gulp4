@@ -1,3 +1,6 @@
 development -> npm run dev
 
 production -> npm run build
+
+
+view -> http://localhost:3000/html/index.html

@@ -1,0 +1,184 @@
+@import "../common/_common.scss";
+main {
+    width: 100%;
+    min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+    margin-top: #{$DesktopHeaderHeight};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: map-get($color, White);
+    margin-top: #{$DesktopHeaderHeight};
+    .mainContainer {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        flex-direction: column;
+        width: #{$ContainerMaxWidth};
+        .title{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .bottomLine{
+            width: 80px;
+        }
+        .normalBlock{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            .title{
+                margin-bottom: 0;
+                color: map-get($color,"Gary50" );
+            }
+            .col{
+                display: flex;
+                width: 100%;
+                margin-bottom: 20px;
+                .content{
+                    padding-left: 10px;
+                    display: flex;
+                    align-items: center;
+                    &:not(:last-child){
+                        margin-right: 20px;
+                    }
+                    .title{
+                        flex-basis: 80px;
+                    }
+                    .f_b100{
+                        flex-basis: 100px;
+                    }
+                    .IMEIInput{
+                        border: 0;
+                        border-bottom: 1px solid map-get($color,"White20");
+                        border-radius: 0px;
+                    }
+                    input{
+                        flex-grow: 1 ;
+                    }
+                    .radioGroup{
+                        display: flex;
+                        align-items: center;
+                        flex-grow: 1 ;
+                        .radioContent{
+                            display: flex;
+                            align-items: center;
+                            white-space: nowrap;
+                            &:last-child{
+                                flex: 1;
+                            }
+                            input{
+                                margin-right: 5px;
+                            }
+                        }
+                        #otherAddress{
+                            margin-left: 30px;
+                        }
+                        .otherAddress{
+                            width: calc(100% - 150px);
+                            margin-left: 10px;
+                            border: 0;
+                            border-bottom: 1px solid map-get($color,"White20");
+                            border-radius: 0px;
+                        }
+                    }
+                    .checkboxGroup{
+                        display: flex;
+                        flex-wrap: wrap;
+                        span{
+                            display: flex;
+                            align-items: center;
+                            margin: 3px 20px 10px;
+                            &:last-child{
+                                margin-right: 0;
+                            }
+                            input{
+                                margin-right: 5px;
+                            }
+                        }
+                        .otherContainer{
+                            margin-right: 0;
+                        }
+                        .other{
+                            border: 0;
+                            border-bottom: 1px solid map-get($color,"White20");
+                            border-radius: 0px;
+                            padding: 0 5px 5px;
+                            margin-left: 10px;
+                        }
+                    }
+                }
+                .w30{
+                    width: 30%;
+                }
+                .w70{
+                    width: 70%;
+                }
+                .w100{
+                    width: 100%;
+                }
+                .title{
+                    font-size: 14px;
+                }
+                &.telSerial{
+                    margin-bottom: 0;
+                }
+                .checkboxContainer{
+                    display: flex;
+                    align-items: flex-start;
+                }
+            }
+        }
+        .notice {
+            display: flex;
+            align-items: start;
+            flex-direction: column;
+            .readedNotice,
+            .notAgreedNotice{
+                display: flex;
+                align-items: center;
+            }
+            input{
+                margin-right: 5px;
+            }
+        .title {
+            color: map-get($color, "Gary50");
+            margin-bottom: 20px;
+        }
+        .accordion{
+            min-width: #{$ContainerMaxWidth};
+            text-align: left;
+            margin-bottom: 20px;
+            .accordion-body{
+                max-height: 500px;
+                overflow-y: auto;
+            }
+            .line{
+                margin: 0 auto;
+                width: calc(100% - 40px);
+                border-top:1px solid map-get($color, "Gary110");
+            }
+            .accordion-button:not(.collapsed){
+                box-shadow: unset;
+            }
+        }
+        .readedNotice,.notAgreedNotice{
+            margin-bottom: 20px;
+        }
+        }
+        .btnContainer{
+            text-align: center;
+            margin-top: 60px;
+        }
+        .highlight{
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@include BreakPointSmall {
+  @import "orderFormMobile.scss";
+}

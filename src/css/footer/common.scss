@@ -1,0 +1,47 @@
+@import "../common/_common.scss";
+footer {
+  background: map-get($color, "Gary20");
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 10% 10px;
+    width: #{$ContainerMaxWidth};
+    .content {
+      display: flex;
+      color: map-get($color, "Gary30");
+      align-items: flex-start;
+      .emailIcon {
+        width: 45px;
+        margin-right: 10px;
+      }
+      img {
+        width: 80px;
+        margin-right: 10px;
+        margin-right: 0;
+      }
+      &.center {
+        position: relative;
+        left: -18px;
+      }
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      &.f_start {
+        align-items: flex-start;
+      }
+      a {
+        text-decoration: none;
+        color: map-get($color, "Gary30");
+      }
+    }
+  }
+  .logo {
+    width: 150px;
+  }
+}
+
+@include BreakPointSmall {
+  @import "footerMobile.scss";
+}

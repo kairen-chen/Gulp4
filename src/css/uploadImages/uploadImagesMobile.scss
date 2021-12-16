@@ -1,0 +1,56 @@
+@import "../common/_common.scss";
+main {
+  margin-top: #{$MobileHeaderHeight};
+  .mainContainer {
+    width: 100%;
+    .title {
+      font-size: 20px;
+      text-align: center;
+    }
+    .normalBlock {
+      width: 100%;
+      .col {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 10px;
+        .content {
+          width: 100%;
+          padding-left: 0;
+          margin: 0;
+          align-items: baseline;
+          &:not(:last-child) {
+            margin: 0;
+          }
+          .title {
+            min-width: 40px;
+            text-align: left;
+            margin: 0;
+          }
+          .fileGroup {
+            flex-wrap: wrap;
+            .videoName,
+            .filename {
+              position: relative;
+              left: -50px;
+              width: calc(100% - 79px);
+              margin-top: 10px;
+              min-height: 20px;
+            }
+          }
+        }
+        .greenBtn,
+        .garyBtn {
+          top: 35px;
+          position: absolute;
+          right: 0;
+        }
+      }
+      .displayContainer {
+        .item {
+          width: 100%;
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+}

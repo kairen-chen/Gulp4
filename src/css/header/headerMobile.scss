@@ -1,0 +1,30 @@
+@import "../common/_common.scss";
+header {
+  padding: 10px 10px;
+  height: #{$MobileHeaderHeight};
+  .left{
+    .logo{
+      width: 150px;
+    }
+  }
+  .right {
+    .btnStyle{
+        ._tooltip{
+          left: -46px;
+          top: 40px;
+        }
+      &.menu{
+        padding-left: 20px;
+        padding-right: 20px;
+        border-color: map-get($color, "Gary40");
+        ._tooltip{
+          left: -58px;
+        }
+        img{
+          width: 20px;
+        }
+      }
+    }
+  } 
+}
+

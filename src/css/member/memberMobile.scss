@@ -1,0 +1,41 @@
+@import "../common/_common.scss";
+main {
+   margin-top: #{$MobileHeaderHeight};
+    .mainContainer {
+       .normalBlock {
+            width: 100%;
+            .form {
+                .formContainer{
+                    flex-direction: column;
+                    .content{
+                        .title{
+                            display: block;
+                            margin-bottom: 10px;
+                            margin-right: 0;
+                        }
+                        .context{
+                            display: block;
+                            margin-left: 10px;
+                        }
+                        div{
+                            input[type="text"]{
+                                width: 100%;
+                            }
+                        }
+                        .radioGroup {
+                        display: block;
+                        
+                        } 
+                        ._row{
+                            display: flex;
+                        }
+                    }
+                    
+                }
+            }
+            .tab-content{
+                padding: 40px 20px;
+            }
+        }
+     }
+}

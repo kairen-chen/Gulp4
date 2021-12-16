@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/header/common.css">
+    <link rel="stylesheet" href="../css/orderForm/common.css">
+    <link rel="stylesheet" href="../css/footer/common.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <a href="/html/index.html" target="_self">
+                <img class="logo" src="https://www.fun2repair.com/img/logo.png"></img>
+            </a>
+        </div>
+    </header>
+    <main>
+        <div id="carouselExampleIndicators" class="carousel  slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="deskTopShow" src="../images/web/page_banner_order_form.jpg" class="d-block w-100"
+                        alt="...">
+                    <img class="mobileShow" src="../images/mobile/mobile_page_banner_order_form.png"
+                        class="d-block w-100" alt="...">
+                </div>
+            </div>
+        </div>
+        <div class="mainContainer">
+            <div class="title">
+                維修服務
+                <div class="bottomLine"></div>
+            </div>
+            <form action="">
+                <div class="normalBlock">
+                    <div class="title">
+                        我們目前專修Google手機。若需送修手機，請詳填報修資訊以確保回件資訊正確
+                    </div>
+                    <div class="highlight">
+                        ＊底下欄位皆為必填
+                    </div>
+                    <div class="col">
+                        <div class="content w30">
+                            <span class="title">姓名</span>
+                            <input type="text" required="required">
+                        </div>
+                        <div class="content w70">
+                            <span class="title">電郵信箱</span>
+                            <input type="email" required="required">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content w30">
+                            <span class="title">電話</span>
+                            <input type="tel" required="required">
+                        </div>
+                        <div class="content w70">
+                            <span class="title">取件地址</span>
+                            <input type="text" required="required">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content w100">
+                            <span class="title">回件地址</span>
+                            <div class="radioGroup">
+                                <div class="radioContent">
+                                    <input id="sameAddress" type="radio" name="backAddress">
+                                    <label for="sameAddress">同取件地址</label>
+                                </div>
+                                <div class="radioContent">
+                                    <input id="otherAddress" type="radio" name="backAddress">
+                                    <label for="otherAddress">另送別的地址</label>
+                                </div>
+                                <input type="text" class="otherAddress" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content w100">
+                            <span class="title">手機型號</span>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col telSerial">
+                        <div class="content w100">
+                            <span class="title f_b100">手機IMEI序號</span>
+                            <div>
+                                <a href="">[如何查詢手機IMEI?]</a>
+                                手機請按*#06#或SIM卡托取出查看,若有困難,可連繫
+                                <a href="mailto:fun2repair@fih-foxconn.com">客服信箱詢問</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content w100">
+                            <input class="IMEIInput" type="text">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="content w100 checkboxContainer">
+                            <span class="title f_b100">報修原因</span>
+                            <div class="checkboxGroup">
+                                <span>
+                                    <input id="reason_a" type="checkbox">
+                                    <label for="reason_a">無法關機</label>
+                                </span>
+                                <span>
+                                    <input id="reason_b" type="checkbox">
+                                    <label for="reason_b">無法充電</label>
+                                </span>
+                                <span>
+                                    <input id="reason_c" type="checkbox">
+                                    <label for="reason_c">手機受潮</label>
+                                </span>
+                                <span>
+                                    <input id="reason_d" type="checkbox">
+                                    <label for="reason_d">當機（可開機但無法到正常開機畫面）</label>
+                                </span>
+                                <span>
+                                    <input id="reason_e" type="checkbox">
+                                    <label for="reason_e">螢幕破裂</label>
+                                </span>
+                                <span>
+                                    <input id="reason_f" type="checkbox">
+                                    <label for="reason_f">螢幕顯示異常</label>
+                                </span>
+                                <span>
+                                    <input id="reason_g" type="checkbox">
+                                    <label for="reason_g">無法讀取SIM卡</label>
+                                </span>
+                                <span>
+                                    <input id="reason_h" type="checkbox">
+                                    <label for="reason_h">響鈴異常/無聲</label>
+                                </span>
+                                <span>
+                                    <input id="reason_i" type="checkbox">
+                                    <label for="reason_i">聽筒異常/無聲</label>
+                                </span>
+                                <span class="otherContainer">
+                                    <input id="reason_j" type="checkbox">
+                                    <label for="reason_j">其他</label>
+                                </span>
+                                <input type="text" class="other" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="notice">
+                    <div class="title">
+                        請先閱讀送修說明與維修保固注意事項
+                    </div>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    送修說明與維修保固注意事項
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="line"></div>
+                                <div class="accordion-body">
+                                    <p>
+                                    <div>維修保固服務說明</div>
+                                    <div>本服務說明目的為了保護「FUN2Repair」以及您的利益，請您詳細閱讀。</div>
+                                    <ol>
+                                        <li>產品送修後.若經實際檢測包含外觀檢視／註記，故障判斷報價等事宜，若客戶不同意報價維修, 本公司仍允收檢測費用。若經檢測，送修產品除客戶報修之部份故障
+                                            外，尚有其他非保固範圍（如：人損、受潮或非自然因素造成）之故障，導致無法進行維修等功能性問題，需一併付費、維修方能處理。</li>
+                                        <li>您知悉並同意，FUN2Repair維修服務不包含協助備份資料、刪除資料或回復送修產品內之軟體、個人資料或其他任何資料等（下合稱「資料」）。請您送修前確實
+                                            將資料備份或刪除並解鎖，若您未完成資料備份或刪除，FUN2Repair將逕行刪除資料(不包含資料備份)。請注意，FUN2Repair就送修產品內資料之遺失或毀損不
+                                            負任何損害賠償或回復責任。</li>
+                                        <li>請拔除 SIM 卡、記憶卡，並取下手機配件。送修產品上倘有裝飾配件（如水鑽、貼紙、螢幕保護貼、全機膠膜等），
+                                            FUN2Repair無法保證於檢測或維修過程確保
+                                            其完整性，倘裝飾配件於檢測或維修過程發生毀損時， FUN2Repair不負任何賠償責任。</li>
+                                        <li>送修產品所取下之零組件或模組等，其所有權歸FUN2Repair所有；以更換良品單機之維修方式時，原機所有權歸原廠所有。</li>
+                                        <li>產品保固範圍不包含產品本身瑕疵以外任何因素所造成之故障，包括但不限於： 　
+                                            <ul>
+                                                <li>因天災、地變等不可抗力因素造成產品功能減損、損壞或故障。</li>
+                                                <li>不當使用（包含但不限於產品暴露於非原廠建議適當防護等級之環境中、人損、受潮等）、未依原廠就產品規格之操作建議或使用說明、自行拆修、
+                                                    任何破
+                                                    解（如：刷機）／改裝／安裝非原廠認可之軟體／設備／零組件等，導致產品功能減損（如防水、防塵功能不穩定或失效）、損壞或故障。</li>
+                                                <li>產品之原廠型號、序號條碼（即IMEI）、保固貼紙如有脫落、毀損或變更等，導致無法辨識者。</li>
+                                                <li>產品外觀及消耗性材料（如電池）、零／配／附件（如耳機）天線等。</li>
+                                                <li>其他不可歸責於FUN2Repair之事由致無法維修者。</li>
+                                                <li>其餘未載事項，概依各產品原廠官方網站為準。</li>
+                                            </ul>
+                                        </li>
+                                        <li>FUN2Repair於完成維修後將提供該產品付費維修項目3個月之保固服務。</li>
+                                        <li>客戶於收到FUN2Repair以電話或簡訊通知送修產品修復或更換良品單機以及用戶應付費維修未付費，客戶逾期14日內取件或未付費時，視為客戶拋棄所有權及相關
+                                            權利， FUN2Repair就送修產品或更換良品單機可任意處置，客戶不得向FUN2Repair為任何主張或請求。</li>
+                                        <li>FUN2Repair收到您寄出之送修產品後，將進行實際檢測(包含但不限於外觀檢視及註記)並提供故障判斷報價等事宜。
+                                            <span class="highlight">無論您是否接受該報價維修服務，FUN2Repair
+                                                皆酌收檢測費用與物流費用新台幣460元整。</span>
+                                        </li>
+                                    </ol>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="readedNotice">
+                        <input id="readed" type="radio" name="notice">
+                        <label for="readed">已經詳細閱讀以上說明。同意以上說明內容</label>
+                    </div>
+                    <div class="notAgreedNotice">
+                        <input id="agreed" type="radio" name="notice">
+                        <label for="agreed">不同意以上說明
+                        </label>
+                    </div>
+                </div>
+                <p class="highlight">
+                    *溫馨提醒如在週一至週五08:00~18:00之間提交維修單，物流司機會在半小時內與您聯繫取件， 如不在以上敘述時間，
+                    則會在隔日進行取件，請提前做好備份處理與包裝好手機並將SIM卡移除，避免您的資料遺失，謝謝。
+                </p>
+                <div class="btnContainer">
+                    <div class="garyBtn">重填</div>
+                    <input type="submit" class="orangeBtn" value="提交">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

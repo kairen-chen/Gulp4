@@ -1,0 +1,201 @@
+@import "../common/_common.scss";
+main {
+    width: 100%;
+    min-height: calc(100vh - #{$DesktopHeaderHeight} - #{$DesktopFooterHeight});
+    margin-top: #{$DesktopHeaderHeight};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: map-get($color, "White10");
+    margin-top: #{$DesktopHeaderHeight};
+    .mainContainer {
+        font-size: 14px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px;
+        flex-direction: column;
+        &.white{
+            background-color: map-get($color, White);
+        }
+        &.white30{
+            background-color: map-get($color, "White30");
+        }  
+        &.linear{
+            position: relative;
+            background-image: linear-gradient(to bottom,  map-get($color, White) 3%, map-get($color, "White40") 93%);
+            .item{
+                z-index: 1;
+                img{
+                    width: 174px;
+                }
+                .describe{
+                    margin-top: 20px;
+                }
+            }
+            .line{
+                z-index: 0;
+                position: absolute;
+                top: 290px;
+                width: calc( #{$ContainerMaxWidth} - 300px);
+                height: 10px;
+                box-shadow: 0 10px 8px 0  map-get($color, "White50");
+                background-color: map-get($color, White);
+            }
+        }
+        .title{
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .normalBlock{
+            width: #{$ContainerMaxWidth};
+            display: flex;
+            justify-content: space-around;
+            .item{
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+                text-decoration: none;
+                color: map-get($color, Black);
+                .describe{
+                    text-align: center;
+                    font-size: 20px;
+                }
+                .number{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width: 40px;
+                    width: 40px;
+                    height: 40px;
+                    background-color: map-get($color, "Black10");
+                    border-radius: 50%;
+                    color: map-get($color, White );
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin-bottom: 40px;
+                }
+            }
+            &.service{
+                .item{
+                    width: calc(#{$ContainerMaxWidth} / 5);
+                    }
+                    img{
+                        width: 100%;
+                    }
+                    img:hover{
+                        box-shadow: 0 0 0 2px  map-get($color, "Orange10");
+                        border-radius: 8px;
+                    }
+                    .describe{
+                        color: map-get($color, "Gary60" );
+                    }
+                }
+        }
+        &.production{
+            .normalBlock{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                .item{
+                    display: flex;
+                    justify-content: space-between;
+                    width: calc((#{$ContainerMaxWidth} / 5) - 20px);
+                    margin: 0 10px 40px;
+                    img{
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                
+                }
+            }
+        }
+    }
+    .modal{
+        .modal-dialog{
+            min-width: 650px;
+        }
+        .modal-content{
+            padding: 20px;
+            padding-top: 40px;
+        }
+        .modal-header{
+            padding-top: 0;
+        }
+        &.maintain{
+            .modal-header{
+                border: 0;
+            }
+            .modal-body{
+                padding: 0;
+                .context{
+                    align-items: flex-start;
+                    width: 100%;
+                    .left{
+                        text-align: center;
+                        width: 50%;
+                        img{
+                            width: 75%;
+                        }
+                    }
+                    .right{
+                         width: 50%;
+                        padding: 0 10px;
+                        .title{
+                            font-size: 20px;
+                            text-align: center;
+                            margin-bottom: 20px;
+                            color: map-get($color, "Gary120");
+                        }
+                        .describe{
+                            margin-bottom: 20px;
+                        }
+                        .dataContext{
+                            display: flex;
+                        }
+                        .data{
+                            color: map-get($color, "Orange10");
+                        }
+                    }
+                }
+            }
+        }   
+        .modal-header{
+            margin: 0 10px;
+            color: map-get($color, "Gary90");
+        }
+        .modal-body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .context{
+                    width: 90%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    
+                img{
+                    width: 50%;
+                }
+                .describe{
+                    color: map-get($color, "Gary90");
+                }
+            }
+        }
+        .btnContainer{
+            text-align: center;
+            margin: 20px 0;
+            .orangeBtn{
+                padding: 5px 25px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@include BreakPointSmall {
+  @import "indexMobile.scss";
+}

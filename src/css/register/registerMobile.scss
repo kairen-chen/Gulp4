@@ -1,0 +1,99 @@
+@import "../common/_common.scss";
+main {
+   margin-top: #{$MobileHeaderHeight};
+    .mainContainer {
+        width: 100%;
+        padding: 40px;
+        .subTitle{
+            width: 100%;
+        }
+        .content{
+            position: relative;
+            margin-bottom: 0;
+            .title{
+                width: 100%;
+                margin-bottom: 10px;
+                &:not(:first-child){
+                    margin: 0;
+                }
+                
+            }
+            input{
+                &.row_3w,&.row_2w{
+                    width: 100%;
+                    margin-bottom: 20px;
+                    margin-top: 5px;
+                }
+            }
+            &.verifyCode{
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+                .inputContent{
+                    align-items: center;
+                    margin-top: 10px;
+                    .blue{
+                        margin-bottom: 20px;
+                    }
+                }
+                .phoneVerify{
+                    text-align: center;
+                }
+            }
+            .checkPassword{
+                top:0;
+            }
+            .mobile{
+                display: block;
+                &.row_3w{
+                    width: 50%;
+                }
+            }
+            .mobileRadioGroup{
+                width: 50%;
+                position: absolute;
+                top:0;
+                left: calc(50%);
+                text-align: left;
+                margin-left: 10px!important;
+                .title{
+                    display: block;
+                    text-align: left;
+                }
+            }
+            .radioGroup{
+                label{
+                    margin-right: 10px;
+                }
+                .radio{
+                    margin-left: 0;
+                }
+            }
+           
+        } 
+        .checkPasswordContent{
+            flex-direction: column;
+            justify-content: flex-start;
+            .title{
+                text-align: left;
+                margin-bottom: 0;
+            }
+        }
+        .privacyContainer{
+            width: 100%;
+            .title{
+                width: 100%;
+                text-align: center;
+            }
+            .accordion{
+                min-width: 100%;
+               .accordion-body{
+                    max-height: 250px;
+                }
+            }
+        }
+    }
+    .orangeBtn{
+        width: 100%;
+    }
+}

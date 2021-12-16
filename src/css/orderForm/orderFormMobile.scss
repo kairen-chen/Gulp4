@@ -1,0 +1,73 @@
+@import "../common/_common.scss";
+main{
+    margin-top: #{$MobileHeaderHeight};
+    .mainContainer{
+        width: 100%;
+        .normalBlock{
+            width: 100%;
+            .title{
+                text-align: center;
+            }
+            .col {
+                flex-direction: column;
+                flex-basis: auto;
+                margin-bottom: 0;
+                .content {
+                    flex-direction: column;
+                    align-items: unset;
+                    margin-bottom: 20px;
+                    .title{
+                        display: block;
+                        flex-basis: auto;
+                        text-align: left;
+                        margin-bottom: 10px;
+                    }
+                    .radioGroup{
+                        flex-direction: column;
+                        align-items: flex-start;
+                        #otherAddress{
+                            margin-left: 0;
+                        }
+                        .otherAddress{
+                            width: calc(100% - 20px);
+                            padding:5px 10px;
+                            margin-left: 0;
+                            margin-left: 20px;
+                        }
+                        .radioContent{
+                            width: 100%;
+                            &:not(:last-child){
+                                margin-bottom: 10px;
+                            }
+                            input{
+                                flex-grow: unset;
+                            }
+                        }
+                    }
+                    .IMEIInput{
+                        padding-top: 0;
+                    }
+                }
+                .w30{
+                    width: 100%;    
+                }
+                .w70{
+                    width: 100%;    
+                }
+            }
+        }
+        .notice {
+            .title{
+                font-size: 16px;
+            }
+           
+            
+            .accordion{
+                min-width: 100%;
+                .accordion-button{
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

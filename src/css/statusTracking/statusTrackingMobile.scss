@@ -1,0 +1,48 @@
+@import "../common/_common.scss";
+main{
+    margin-top: #{$MobileHeaderHeight};
+    .mainContainer{
+        width: 100%;
+        align-items: flex-start;
+        .title{
+            align-self: center;
+        }
+        .normalBlock{
+            width: 100%;
+            .col{
+                flex-direction: column;
+                .content{
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 0;
+                    margin-right: 0;
+                    &:not(:last-child){
+                        margin-bottom: 20px;
+                    }
+                    .title{
+                        margin-bottom: 5px;
+                        align-self: flex-start;
+                    }
+                    input{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .mobileShow{
+            width: 100%;
+            .orderContainer{
+                margin-bottom: 20px;
+            }
+        }
+        .table{
+            width: 100%;
+            margin-top: 10px;
+            border: 1px solid map-get($color , "White20");
+            td{
+                border: 0;
+            }
+        }
+    }
+}
