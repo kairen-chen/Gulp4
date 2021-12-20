@@ -129,14 +129,19 @@ const watchForChanges = () => {
 const serverStart = () => {
   browserSync.init({
     server: {
+      // 觀察這個資料夾的變動,映射到瀏覽器上
       baseDir: `./${outPutBase}`,
     },
+    // 改port
+    port: 3010,
+    // npm run dev後打開的起始網頁
+    startPath: "/html/index.htm",
+    test: 123,
   });
   browserSync.emitter.on("init", function () {
     console.log("Browsersync is running!");
   });
 };
-
 // public tasks
 exports.default = series(
   clean,
