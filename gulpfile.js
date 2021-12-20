@@ -135,8 +135,7 @@ const serverStart = () => {
     // 改port
     port: 3010,
     // npm run dev後打開的起始網頁
-    startPath: "/html/index.htm",
-    test: 123,
+    startPath: "/html/index.html",
   });
   browserSync.emitter.on("init", function () {
     console.log("Browsersync is running!");
